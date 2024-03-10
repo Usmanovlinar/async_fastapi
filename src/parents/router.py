@@ -14,7 +14,6 @@ router = APIRouter(
 
 @router.post("/", status_code=201)
 async def create_parent(parent: schemas.ParentsChema, session:AsyncSession =Depends(get_session)):
-    print(f"hello { parent}")
     response = await service.create_parent(parent, session)
     return response
 
@@ -27,5 +26,5 @@ async def read_car(parent_id: int, session :AsyncSession =Depends(get_session)):
 
 @router.delete("/{car_id}")
 async def delete_car(parent_id: int, session :AsyncSession =Depends(get_session)):
-    ress =  await service.remove_parent(session, parent_id)
-    return ress
+    response =  await service.remove_parent(session, parent_id)
+    return response
